@@ -1,18 +1,19 @@
 * {
     box-sizing: border-box;
     margin: 0px;
-    font-family: Arial;
 }
 
 body {
     padding-left: 10px;
     padding-right: 10px;
+    font-family: Arial;
+    font-size: 16px;
 }
 
 h1 {
     text-align: center;
     margin: 20px;
-    font-size: 175%;
+    font-size: 1.75em;
 }
 
 section {
@@ -53,7 +54,7 @@ section h2 {
     border: 2px solid black;
     padding-left: 40px;
     padding-right: 40px;
-    font-size: 125%;
+    font-size: 1.25em;
 }
 
 section article {
@@ -161,7 +162,7 @@ section article {
         text-align: left;
         margin-left: 10px;
         font-family: monospace;
-        font-size: 125%;
+        font-size: 1.25em;
     }
     section h2 {
         float: none;
@@ -169,7 +170,7 @@ section article {
         border: none;
         border-bottom: 2px solid black;
         width: 100%;
-        font-size: 125%;
+        font-size: 1.25em;
         text-align: center;
     }
 }
