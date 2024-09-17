@@ -6,6 +6,17 @@
     text-align: center;
 }
 
+/* align brand with first section */
+#header-nav .container {
+    margin-left: 30px;
+    padding-left: 0px;
+}
+
+.navbar-nav{
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
 .navbar-header {
     padding-bottom: 20px;
 }
@@ -24,7 +35,7 @@
 }
 
 .navbar-default .navbar-nav > li{
-    border: 2px;
+    outline: solid 2px black;
 }
 
 .navbar-default .navbar-nav > li > a{
@@ -60,6 +71,9 @@
 
 #collapsable-nav{
     background-color: white;
+    margin-left: -30px;
+    border-top: solid 4px black;
+    border-bottom: solid 4px black;
 }
 
 #main-content {
@@ -71,5 +85,6 @@
 @media (min-width: 768px) {
     #collapsable-nav{
         background-color: gray;
+        border-style: none;
     }
 }
