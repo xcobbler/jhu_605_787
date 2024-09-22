@@ -62,4 +62,41 @@ for (var i = 0; i < names.length; i++) {
     helloSpeaker.speak(names[i]);
   }
 }
+
+function getGreeting(name) {
+  var firstLetter = name.toLowerCase().charAt(0);
+  if (firstLetter == 'j') {
+    return byeSpeaker.speakSimple(name);
+  } else {
+    return helloSpeaker.speakSimple(name);
+  }
+}
+
+var greetings = names.map(getGreeting);
+
+for(var i = 0; i < greetings.length; i++){
+  console.log(greetings[i]);
+}
+
+
+var greetingGroups = names.reduce(
+  (groupings, name) => {
+    var firstLetter = name.toLowerCase().charAt(0);
+    if (firstLetter == 'j') {
+      groupings.bye.push(byeSpeaker.speakSimple(name));
+    } else {
+      groupings.hello.push(helloSpeaker.speakSimple(name));
+    }
+    return groupings;
+  },
+  {hello: [], bye: []}
+);
+
+for(var i = 0; i < greetingGroups.hello.length; i++){
+  console.log(greetingGroups.hello[i]);
+}
+for(var i = 0; i < greetingGroups.bye.length; i++){
+  console.log(greetingGroups.bye[i]);
+}
+
 })();
