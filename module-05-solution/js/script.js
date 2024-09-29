@@ -23,6 +23,8 @@ var menuItemsUrl =
 var menuItemsTitleHtml = "snippets/menu-items-title.html";
 var menuItemHtml = "snippets/menu-item.html";
 
+var aboutHtmlUrl = "snippets/about-snippet.html";
+
 // Convenience function for inserting innerHTML for 'select'
 var insertHtml = function (selector, html) {
   var targetElem = document.querySelector(selector);
@@ -136,6 +138,27 @@ function chooseRandomCategory (categories) {
   // return category object with that randomArrayIndex
   return categories[randomArrayIndex];
 }
+
+dc.loadAbout = function () {
+  showLoading("#main-content");
+  $ajaxUtils.sendGetRequest(
+    aboutHtmlUrl,
+    function (aboutHtml) {
+      var maxStarCount = 5; //note: should match number of spans
+      var randomRating = 1 + Math.floor(Math.random() * maxStarCount);// 1 - 5 inclusive
+      //full stars
+      for(var i = 1; i <= randomRating; i++){
+        aboutHtml = insertProperty(aboutHtml, 'class' + i, 'fa fa-star');
+      }
+      //empty stars
+      for(var i = randomRating + 1; i <= maxStarCount; i++){
+        aboutHtml = insertProperty(aboutHtml, 'class' + i, 'fa fa-star-o');
+      }
+      aboutHtml = insertProperty(aboutHtml, 'ratingWords', randomRating + '-star rating')
+      insertHtml("#main-content", aboutHtml);
+    },
+    false);
+};
 
 
 // Load the menu categories view
