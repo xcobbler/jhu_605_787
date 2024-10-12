@@ -20,6 +20,9 @@
       button > span {
         color: green;
       }
+      .smallTextBox{
+        width: 40px;
+      }
     </style>
   </head>
 <body ng-app="ShoppingListCheckOff">
@@ -32,7 +35,7 @@
     <div class="col-md-6" ng-controller="ToBuyController as buyList">
      <h2>To Buy:</h2>
      <ul>
-       <li ng-repeat="item in buyList.items">Buy {{item.quantity}} {{item.name}} <button ng-click="buyList.buyItem($index)" class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Bought</button></li>
+       <li ng-repeat="item in buyList.items">Buy <input ng-model="item.quantity" class="smallTextBox"/> {{item.name}} <button ng-click="buyList.buyItem($index);" class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Bought</button></li>
      </ul>
      <div ng-if="!buyList.items.length" class="emptyMessage">Everything is bought!</div>
     </div>
@@ -41,7 +44,7 @@
     <div class="col-md-6" ng-controller="AlreadyBoughtController as boughtList">
      <h2>Already Bought:</h2>
      <ul>
-       <li ng-repeat="item in boughtList.items">Bought {{item.quantity}} {{item.name}}</li>
+       <li ng-repeat="item in boughtList.items">Bought {{item.quantity}} of {{item.name}} for total price of {{boughtList.getTotalPrice(item) | ngcurrency}}</li>
      </ul>
      <div ng-if="!boughtList.items.length" class="emptyMessage">Nothing bought yet.</div>
     </div>
