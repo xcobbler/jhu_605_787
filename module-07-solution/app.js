@@ -28,6 +28,9 @@
         var toBuyItems = [
             {name: "Cookies", quantity: 10, pricePerItem: 5},
             {name: "Pepsi", quantity: 2, pricePerItem: 2},
+            {name: "Bananas", quantity: 7, pricePerItem: .15},
+            {name: "Milk", quantity: 2, pricePerItem: 4},
+            {name: "Eggs", quantity: 1, pricePerItem: 4.50},
         ];
 
         var boughtItems = [];
