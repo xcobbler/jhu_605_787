@@ -37,6 +37,17 @@
 }
 /* END HOME PAGE */
 
+/* SIGN UP PAGE */
+
+div.signUp {
+  color: black;
+}
+span.error {
+  color: red;
+}
+
+/* END SIGN UP PAGE */
+
 /* MENU CATEGORIES PAGE */
 .category-tile {
   position: relative;

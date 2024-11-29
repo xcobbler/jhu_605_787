@@ -1,0 +1,52 @@
+<div class="container signUp" >
+    <form name="signUpForm" novalidate>
+        <div class="row">
+            <input  type="text" name="firstName" placeholder="First Name"
+                    ng-model="signUpCtrl.user.firstName"
+                    required />
+            <span class="error" ng-if="signUpForm.firstName.$touched && signUpForm.firstName.$invalid">
+                First Name is required
+            </span>
+        </div>
+        <div class="row">
+            <input  type="text" name="lastName" placeholder="Last Name"
+                    ng-model="signUpCtrl.user.lastName"
+                    required />
+            <span class="error" ng-if="signUpForm.lastName.$touched && signUpForm.lastName.$invalid">
+                Last Name is required
+            </span>
+        </div>
+        <div class="row">
+            <input  type="email" name="email" placeholder="Email"
+                    ng-model="signUpCtrl.user.email"
+                    required />
+            <span class="error" ng-if="signUpForm.email.$invalid && signUpForm.email.$touched">
+                Must be a valid email address: handle@domain format
+            </span>
+        </div>
+        <div class="row">
+            <input type="text" name="phoneNumber" placeholder="Phone Number"
+                   ng-model="signUpCtrl.user.phoneNumber"
+                   pattern="\d{3}-\d{3}-\d{4}"
+                   required />
+            <span class="error" ng-if="signUpForm.phoneNumber.$invalid && signUpForm.phoneNumber.$touched">
+                Phone must be in the format ###-###-####
+            </span>
+        </div>
+        <div class="row">
+            <input  type="text" name="favMenuItem" placeholder="Favorite Menu Item"
+                    ng-model="signUpCtrl.user.favMenuItem"
+                    ng-blur="signUpCtrl.processMenuItem()"
+                    required />
+            <span class="error" ng-if="signUpForm.favMenuItem.$touched">{{signUpCtrl.menuItemError}}</span>
+        </div>
+        <br>
+        <div class="row">
+            <button
+            ng-disabled="signUpForm.$invalid || signUpCtrl.menuItemError"
+            ng-click="signUpCtrl.submit()">Submit</button>
+        </div>
+    </form>
+    <br>
+    <div ng-if="signUpCtrl.isSignedUp">{{signUpCtrl.signedUpMessage}}</div>
+</div>
