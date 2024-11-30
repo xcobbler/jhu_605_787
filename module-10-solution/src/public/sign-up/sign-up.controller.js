@@ -4,8 +4,8 @@
     angular.module('public')
     .controller('SignUpController', SignUpController);
     
-    SignUpController.$inject = ['MenuService', 'UserService'];
-    function SignUpController(MenuService, UserService) {
+    SignUpController.$inject = ['allMenuItems', 'UserService'];
+    function SignUpController(allMenuItems, UserService) {
       var ctrl = this;
       var itemsMap = {};
       /*
@@ -15,14 +15,12 @@
           "short_name": "A1",
         },
         */
-      MenuService.getAllMenuItems().then(data => {
-        for(const cat in data) {
-          for(let i = 0; i < data[cat].menu_items.length;i++){
-            itemsMap[data[cat].menu_items[i].short_name.toUpperCase()] = data[cat].menu_items[i];
-            itemsMap[data[cat].menu_items[i].short_name.toUpperCase()].categoryShortName = cat;
-          }
+      for(const cat in allMenuItems) {
+        for(let i = 0; i < allMenuItems[cat].menu_items.length;i++){
+          itemsMap[allMenuItems[cat].menu_items[i].short_name.toUpperCase()] = allMenuItems[cat].menu_items[i];
+          itemsMap[allMenuItems[cat].menu_items[i].short_name.toUpperCase()].categoryShortName = cat;
         }
-      });
+      }
       
       ctrl.user = {};
       ctrl.isSignedUp = false;
